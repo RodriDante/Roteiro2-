@@ -1,0 +1,46 @@
+using System;
+
+public class Produto
+{
+    private string _nome;
+    private decimal _preco;
+
+    public string Nome
+    {
+        get { return _nome; }
+        set { _nome = value; }
+    }
+
+    public decimal Preco
+    {
+        get { return _preco; }
+        set
+        {
+            if (value >= 0)
+            {
+                _preco = value;
+            }
+            else
+            {
+                Console.WriteLine("O preço não pode ser negativo.");
+            }
+        }
+    }
+
+    public void ExibirDetalhes()
+    {
+        Console.WriteLine($"O produto e {Nome} seu preco e {Preco}");
+    }
+}
+
+public class Program
+{
+    static void Main()
+    {
+        Produto p1 = new Produto();
+        p1.Nome = "Capa de chuva";
+        p1.Preco = 23.1;
+
+        p1.ExibirDetalhes();
+    }
+}
