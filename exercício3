@@ -1,0 +1,42 @@
+using System;
+
+class Elevador{
+    private int andarAtual;
+    private int totalAndares;
+    public Elevador(int totalAndares){
+        this.andarAtual = 0;
+        this.totalAndares = totalAndares;
+    }
+    public int AndarAtual{
+        get{return andarAtual;}
+        set{
+            if(value < 0){
+                andarAtual = 0;
+            }
+            else if(value > totalAndares){
+                andarAtual = totalAndares;
+            }
+            else{
+                andarAtual = value;
+            }
+        }
+    }
+    public void Subir(){
+        AndarAtual ++;
+    }     
+    public void Descer(){
+        AndarAtual --;
+    }
+}
+class Program{
+    static void Main(){
+        Elevador e = new Elevador(10); // 10 andares 
+e.Subir(); 
+e.Subir(); 
+Console.WriteLine(e.AndarAtual); // Deve exibir 2 
+e.Descer(); 
+Console.WriteLine(e.AndarAtual); // Deve exibir 1 
+e.Descer(); 
+e.Descer(); // Deve continuar em 0
+    }
+}
